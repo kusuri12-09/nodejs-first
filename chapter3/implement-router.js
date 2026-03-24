@@ -5,7 +5,7 @@ http.createServer((req, res) => {
     const path = url.parse(req.url, true).pathname;
     res.setHeader("Content-Type", "text/html; charset=utf-8");  // 한글 깨짐 방지
     
-    if (path in urlMap) {
+    if (path in urlMap) {  // 객체 안에 해당 키가 있는지 검사
         urlMap[path](req, res);
     } else {
         notFound(req, res);
@@ -31,6 +31,7 @@ function notFound(req, res) {
     res.end("404 page not found")
 }
 
+// urlMap 객쳋 추가
 const urlMap = {
     "/": (req, res) => res.end("HOME"),
     "/user": user,
