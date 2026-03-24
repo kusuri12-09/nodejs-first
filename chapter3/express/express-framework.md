@@ -22,3 +22,26 @@ Express Framework를 이용하여 빠르게 개발
 ```shell
 npm install express
 ```
+
+## board.js 실습하기
+
+get 요청
+`curl http://localhost:3000`
+
+post 요청
+`curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "title=제목1&name=andy&text=안녕하세요~" http://localhost:3000/posts`
+
+delete 요청
+`curl -X DELETE http://localhost:3000/posts/1`
+
+curl 주요 옵션
+
+옵션 | 의미
+| --- | --- |
+`-X` | HTTP 메서드 정보 (기본 GET)
+`-H` | 헤더 정보
+`-d` | body 데이터
+`-i` | 서버의 응답을 헤더 포함 출력
+`-I` | 서버의 응답을 헤더 값만 출력
+`-L` | 리다이렉트 URL 따라가기
+`-s` | 출력 안함
