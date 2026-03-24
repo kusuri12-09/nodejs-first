@@ -5,10 +5,8 @@ http.createServer((req, res) => {
     const path = url.parse(req.url, true).pathname;
     res.setHeader("Content-Type", "text/html; charset=utf-8");  // 한글 깨짐 방지
     
-    if (path === "/user") {
-        user(req, res);
-    } else if (path === "/feed") {
-        feed(req, res);
+    if (path in urlMap) {
+        urlMap[path](req, res);
     } else {
         notFound(req, res);
     }
@@ -32,3 +30,9 @@ function notFound(req, res) {
     res.statusCode = 404;
     res.end("404 page not found")
 }
+
+const urlMap = {
+    "/": (req, res) => res.end("HOME"),
+    "/user": user,
+    "/feed": feed,
+};
