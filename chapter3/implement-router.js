@@ -6,17 +6,28 @@ http.createServer((req, res) => {
     res.setHeader("Content-Type", "text/html; charset=utf-8");  // 한글 깨짐 방지
     
     if (path === "/user") {
-        res.end("[user] name : andy, age: 30")
+        user(req, res);
     } else if (path === "/feed") {
-      res.end(`
+        feed(req, res);
+    } else {
+        notFound(req, res);
+    }
+}).listen(3000, () => console.log("라우터를 만들어보자!"));
+
+function user(req, res) {
+    res.end("[user] name : andy, age: 30");
+}
+
+function feed(req, res) {
+    res.end(`
         <ul>
           <li>picture1</li>
           <li>picture2</li>
           <li>picture3</li>
-        </ul>
-      `);
-    } else {
-        res.statusCode = 404;
-        res.end("404 page not found")
-    }
-}).listen(3000, () => console.log("라우터를 만들어보자!"));
+        </ul>`);
+}
+
+function notFound(req, res) {
+    res.statusCode = 404;
+    res.end("404 page not found")
+}
