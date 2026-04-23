@@ -17,6 +17,7 @@
     "@nestjs/cli": "^11.0.21",
     "@nestjs/common": "^11.1.19",
     "@nestjs/core": "^11.1.19",
+    "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^11.1.19",
     "reflect-metadata": "^0.2.2",
     "typescript": "^6.0.2"
